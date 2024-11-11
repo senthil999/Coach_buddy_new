@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission Result</title>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Congratulations!!!</h1>
+        <h2>You're rejected...</h2>
+        <p id="Name"></p>
+        <p id="University"></p>
+        <p id="Course"></p>
+        <p id="Position"></p>
+        <img src="10tIjpzIu8fe0.gif">
+    </div>
+
+    <script>
+        // window.location.search gives the url which includes all the input data
+        const urlParams = new URLSearchParams(window.location.search);
+        //.get is used to retrieve all the required content from the URL
+        const name = urlParams.get("name");
+        const university = urlParams.get("university");
+        const course = urlParams.get("course");
+        const position = urlParams.get("position");
+
+        document.getElementById("Name").innerHTML = `Name: ${name}`;
+        document.getElementById("University").innerHTML = `University: ${university}`;
+        document.getElementById("Course").innerHTML = `Course: ${course}`;
+        document.getElementById("Position").innerHTML = `Interested Position: ${position}`;
+    </script>
+</body>
+</html>

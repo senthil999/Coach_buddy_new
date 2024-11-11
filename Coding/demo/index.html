@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoachBuddy Application Form</title>
+    
+    <style>
+/* to modify the overall page along with the background image */
+            body {
+            font-family: Arial, sans-serif;
+            background-image: url('newlogo_transparent.png');
+            background-size: 50%;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content:right;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+/* to tweak the form box */
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            /* padding: 20px; */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: auto;
+        }
+/* this modifies the heading */
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-container label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .form-container input, 
+        .form-container select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+/* this is to tweak the submit button */
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+/* submit when cursor hovers over it */
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+/* to decide area of the radio buttons */
+        fieldset {
+            border: none;
+            padding-top: 10px 0;
+        }
+/* column was looking bad, row reverse-> reverses the order of radio buttons */
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            width: auto;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: left;
+            font-size: 14px;
+            color: #333;
+            width: 50px;
+        }
+        .radio-group-label{
+            width: 200px;
+        }
+/* to modify the selection dot */
+        .radio-group input[type="radio"] {
+            margin-right: 1px;
+            accent-color: #007bff; 
+        }
+/* to tweak the result which is displayed after submit button */
+        .result {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #444;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Student Information</h2>
+        
+        <form id="studentForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="university">University Name:</label>
+            <input type="text" id="university" name="university" required>
+
+            <label for="course">Course:</label>
+            <select id="course" name="course" required>
+                <option value="AIML">AIML</option>
+                <option value="Big Data">Big Data</option>
+                <option value="Cloud">Cloud Computing</option>
+                <option value="Embedded">Embedded System</option>
+            </select>
+
+            <fieldset>
+                <legend>Select Interested Position:</legend>
+                <div class="radio-group">
+                    <label class="radio-group-label"><input type="radio" name="position" value="ML Engineer"> ML Engineer</label>
+                    <label><input type="radio" name="position" value="Data Engineer"> Data Engineer</label>
+                    <label><input type="radio" name="position" value="App Development"> App Development</label>
+                    <label><input type="radio" name="position" value="Intern" checked> Intern</label>
+                </div>
+            </fieldset>
+
+
+            <button type="button" onclick="displayResult()">Submit</button>
+        </form>
+
+        <div class="result" id="resultDisplay"></div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #productDetails {
+            /* this limit the spread */
+            max-width: 500px; 
+            /*this bring everything at center*/
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #007bff;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Fetch Random Product using Jquery</h1>
+
+<div id="productDetails">
+    <img id="productImage" src="" alt="Product Image">
+    <h2 id="productTitle"></h2>
+    <p id="productDescription"></p>
+    <p><strong>Price:</strong> $<span id="productPrice"></span></p>
+    <p><strong>Rating:</strong> <span id="productRating"></span> / 5</p>
+</div>
+
+<button onclick="fetchWithjQuery()">Fetch Random Product</button>
+
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+function fetchWithjQuery() {
+    const random_product = Math.floor(Math.random() * 29 + 1);
+    const apiUrl = `https://dummyjson.com/products/${random_product}`;
+    $.ajax({
+        url: apiUrl,
+        method: 'GET',
+        success: function (data) {
+            console.log(data.message);
+            $('#productImage').attr('src', data.thumbnail);
+            $('#productTitle').text(data.title);
+            $('#productDescription').text(data.description);
+            $('#productPrice').text(data.price);
+            $('#productRating').text(data.rating);
+        },
+        error: function () {
+            console.error('Error fetching data with jQuery AJAX');
+        }
+    });
+}
+</script>
+
+</body>
+</html>

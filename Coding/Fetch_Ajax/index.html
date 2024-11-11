@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    </style>
+</head>
+<body>
+    <h1>Fetch Product Details by Name using Ajax</h1>
+    <input type="text" id="searchBox" placeholder="Enter product name" />
+    <button onclick="fetchProductByName()">Search Product</button>
+
+    <div id="productDetails">
+        <h2 id="productTitle">Product Title</h2>
+        <p id="productDescription">Product description goes here.</p>
+        <p><strong>Price:</strong> $<span id="productPrice">--</span></p>
+        <p><strong>Rating:</strong> <span id="productRating">--</span> / 5</p>
+    </div>
+    <script>
+        // AJAX (XMLHttpRequest)
+        function fetchProductByName() {
+            const productName = document.getElementById('searchBox').value;
+            if (!productName) {
+                alert("Please enter a product name.");
+                return;
+            }
+            const apiUrl = `https://dummyjson.com/products/search?q=${productName}`;
+
+
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", apiUrl, true);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    for (let i = 0; i < response.products.length; i++){
+                    document.getElementById('productTitle').textContent = response.products[i].title;
+                    document.getElementById('productDescription').textContent = response.products[i].description;
+                    document.getElementById('productPrice').textContent = response.products[i].price;
+                    document.getElementById('productRating').textContent = response.products[i].rating;
+                    console.log(response.products[i].title)
+                }}
+            };
+            xhr.onerror = function () {
+                console.error('Error fetching data with AJAX');
+            };
+            xhr.send();
+        }
+        </script>
+</body>
+</html>

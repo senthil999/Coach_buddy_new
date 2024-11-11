@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoachBuddy Application Form</title>
+    <!-- below one links the style to css file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Student Information</h2>
+        
+        <form id="studentForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <br>
+            <label for="university">University Name:</label>
+            <input type="text" id="university" name="university" required>
+            <br>
+            <label for="course">Course:</label>
+            <select id="course" name="course" required>
+                <option value="AIML">AIML</option>
+                <option value="Big Data">Big Data</option>
+                <option value="Cloud">Cloud Computing</option>
+                <option value="Embedded">Embedded System</option>
+            </select>
+
+            <fieldset>
+                <legend>Select Interested Position:</legend>
+                <div class="radio-group">
+                    <label><input type="radio" name="position" value="ML Engineer"> ML Engineer</label>
+                    <label><input type="radio" name="position" value="Data Engineer"> Data Engineer</label>
+                    <label><input type="radio" name="position" value="App Development"> App Development</label>
+                    <label><input type="radio" name="position" value="Intern" checked> Intern</label>
+                </div>
+            </fieldset>
+
+
+            <button type="button" onclick="displayResult()">Submit</button>
+        </form>
+
+        <div class="result" id="resultDisplay"></div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
